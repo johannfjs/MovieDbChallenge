@@ -1,26 +1,20 @@
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    alias(libs.plugins.com.android.application)
+    alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
 }
 
 android {
-    namespace = "com.globant.moviedbchallengue"
+    namespace = "com.globant.navigation"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.globant.moviedbchallengue"
         minSdk = 21
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -39,27 +33,11 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.4"
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
 
 dependencies {
 
-    implementation(project(":design"))
-    implementation(project(":navigation"))
-    implementation(project(":feature-home"))
-
     implementation(libs.core.ktx)
-    implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)
     implementation(platform(libs.compose.bom))
     implementation(libs.compose.navigation)
@@ -71,9 +49,6 @@ dependencies {
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(platform(libs.compose.bom))
-    androidTestImplementation(libs.ui.test.junit4)
-    debugImplementation(libs.ui.tooling)
-    debugImplementation(libs.ui.test.manifest)
 
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
