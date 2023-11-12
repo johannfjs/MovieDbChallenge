@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.globant.moviedbchallengue"
+    namespace = "com.globant.moviedbchallenge"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.globant.moviedbchallengue"
+        applicationId = "com.globant.moviedbchallenge"
         minSdk = 21
         targetSdk = 33
         versionCode = 1
