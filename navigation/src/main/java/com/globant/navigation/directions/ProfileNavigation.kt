@@ -3,7 +3,7 @@ package com.globant.navigation.directions
 import com.globant.navigation.NavigationCommand
 import com.globant.navigation.NavigationRoute
 
-object HomeNavigation : NavigationRoute, NavigationCommand {
-    override val route: String = "home"
+object ProfileNavigation : NavigationRoute, NavigationCommand {
+    override val route: String = "profile"
     override val destination: String = route
 }
