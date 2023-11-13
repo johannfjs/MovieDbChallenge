@@ -22,10 +22,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.globant.design.theme.White
-import com.globant.feature.home.GalleryScreen
-import com.globant.feature.home.LocationScreen
-import com.globant.feature.home.MovieScreen
-import com.globant.feature.home.ProfileScreen
+import com.globant.design.theme.Yellow
+import com.globant.feature.home.gallery.GalleryScreen
+import com.globant.feature.home.location.LocationScreen
+import com.globant.feature.home.movie.MovieScreen
+import com.globant.feature.home.profile.ProfileScreen
 import com.globant.navigation.NavigationManager
 import com.globant.navigation.directions.GalleryNavigation
 import com.globant.navigation.directions.LocationNavigation
@@ -77,7 +78,7 @@ fun BottomNavigation(navController: NavHostController) {
     NavigationBar(
         modifier = Modifier.fillMaxWidth()
             .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp)),
-        containerColor = White,
+        containerColor = Yellow,
     ) {
         options.forEach { item ->
             val currentSelected = selectedItem == item.screenRoute

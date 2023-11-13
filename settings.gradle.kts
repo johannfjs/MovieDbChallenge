@@ -16,3 +16,5 @@ dependencyResolutionManagement {
 rootProject.name = "MovieDbChallengue"
 include(":app", ":design", ":navigation")
 include(":feature-home")
+include(":data")
+include(":domain")

@@ -1,9 +1,9 @@
-package com.globant.feature.home
+package com.globant.feature.home.movie
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 
 @Composable
-fun ProfileScreen() {
-    Text(text = "Profile Screen")
+fun MovieScreen() {
+    Text(text = "Movie Screen")
 }

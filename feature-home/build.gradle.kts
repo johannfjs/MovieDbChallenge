@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.globant.feature.home"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 21
@@ -44,6 +44,7 @@ android {
 dependencies {
 
     implementation(project(":design"))
+    implementation(project(":domain"))
     implementation(project(":navigation"))
 
     implementation(libs.core.ktx)

@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.globant.moviedbchallenge"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.globant.moviedbchallenge"
@@ -54,6 +54,7 @@ android {
 
 dependencies {
 
+    implementation(project(":data"))
     implementation(project(":design"))
     implementation(project(":navigation"))
     implementation(project(":feature-home"))
