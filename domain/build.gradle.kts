@@ -2,12 +2,10 @@
 plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
-    kotlin("kapt")
-    id("com.google.dagger.hilt.android")
 }
 
 android {
-    namespace = "com.globant.navigation"
+    namespace = "com.globant.data"
     compileSdk = 34
 
     defaultConfig {
@@ -34,22 +32,7 @@ android {
         jvmTarget = "17"
     }
 }
-
 dependencies {
-
-    implementation(libs.core.ktx)
-    implementation(libs.activity.compose)
-    implementation(platform(libs.compose.bom))
-    implementation(libs.compose.navigation)
-    implementation(libs.ui)
-    implementation(libs.ui.graphics)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.material3)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.test.ext.junit)
-    androidTestImplementation(libs.espresso.core)
-    androidTestImplementation(platform(libs.compose.bom))
-
-    implementation(libs.hilt)
-    kapt(libs.hilt.compiler)
+    implementation(libs.coroutines)
+    implementation(libs.inject)
 }

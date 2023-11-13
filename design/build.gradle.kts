@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.globant.design"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 21

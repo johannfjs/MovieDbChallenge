@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.globant.navigation"
+    namespace = "com.globant.data"
     compileSdk = 34
 
     defaultConfig {
@@ -36,19 +36,21 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain"))
 
     implementation(libs.core.ktx)
-    implementation(libs.activity.compose)
-    implementation(platform(libs.compose.bom))
-    implementation(libs.compose.navigation)
-    implementation(libs.ui)
-    implementation(libs.ui.graphics)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.material3)
+    implementation(libs.appcompat)
+    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    androidTestImplementation(platform(libs.compose.bom))
+
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter)
+
+    implementation(libs.room)
+    implementation(libs.room.ktx)
+    kapt(libs.room.compiler)
 
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
