@@ -39,7 +39,7 @@ import com.globant.feature.home.model.AccountModel
 import com.globant.feature.home.profile.ProfileViewModel
 
 @Composable
-fun ProfileContent(viewModel: ProfileViewModel, account: AccountModel) {
+fun ProfileContent(viewModel: ProfileViewModel, account: AccountModel?) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -59,7 +59,7 @@ fun ProfileContent(viewModel: ProfileViewModel, account: AccountModel) {
 }
 
 @Composable
-fun HeaderProfile(account: AccountModel) {
+fun HeaderProfile(account: AccountModel?) {
     val actions = listOf(
         ActionModel(
             title = "Calificaciones",
@@ -87,7 +87,7 @@ fun HeaderProfile(account: AccountModel) {
             Text(
                 modifier = Modifier.weight(1f).padding(start = 16.dp)
                     .align(Alignment.CenterVertically),
-                text = account.username,
+                text = account?.username.orEmpty(),
                 fontWeight = FontWeight.Bold,
                 color = DarkGray,
             )

@@ -18,8 +18,14 @@ class ProfileViewModel @Inject constructor(private val getAccountDetailsByIdUseC
     ViewModel() {
 
     private val _account =
-        MutableStateFlow(AccountModel(name = "", username = "", includeAdult = false))
-    var account: StateFlow<AccountModel> = _account
+        MutableStateFlow<AccountModel?>(
+            AccountModel(
+                name = "",
+                username = "",
+                includeAdult = false,
+            ),
+        )
+    var account: StateFlow<AccountModel?> = _account
 
     init {
         getAccountDetailsById(accountId = 20695928)
@@ -30,7 +36,7 @@ class ProfileViewModel @Inject constructor(private val getAccountDetailsByIdUseC
             getAccountDetailsByIdUseCase(accountId = accountId).onStart {
             }.catch {
             }.collect {
-                _account.value = it.data!!.toModel()
+                _account.value = it.data?.toModel()
             }
         }
     }

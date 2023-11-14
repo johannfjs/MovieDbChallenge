@@ -32,7 +32,6 @@ import com.globant.design.theme.White
 fun Movie(
     movieModel: MovieModel,
     onClick: ((MovieModel) -> Unit)? = null,
-    onBookmarkClick: ((MovieModel) -> Unit)? = null,
     onInfoClick: ((MovieModel) -> Unit)? = null,
 ) {
     Card(
@@ -44,12 +43,6 @@ fun Movie(
                 AsyncImage(
                     model = movieModel.imageUrl,
                     contentDescription = "Movie Image",
-                )
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_bookmark_favorite),
-                    contentDescription = "Bookmark Favorite",
-                    modifier = Modifier.padding(start = 8.dp, top = 8.dp).size(24.dp)
-                        .clickable(onBookmarkClick != null) { onBookmarkClick?.invoke(movieModel) },
                 )
             }
             Column(modifier = Modifier.fillMaxWidth().padding(8.dp)) {
