@@ -3,7 +3,9 @@ package com.globant.feature.home.profile
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.globant.domain.usecases.GetAccountDetailsByIdUseCase
+import com.globant.domain.usecases.GetPersonPopularUseCase
 import com.globant.feature.home.model.AccountModel
+import com.globant.feature.home.model.PersonModel
 import com.globant.feature.home.model.toModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,7 +16,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProfileViewModel @Inject constructor(private val getAccountDetailsByIdUseCase: GetAccountDetailsByIdUseCase) :
+class ProfileViewModel @Inject constructor(
+    private val getAccountDetailsByIdUseCase: GetAccountDetailsByIdUseCase,
+    private val getPersonPopularUseCase: GetPersonPopularUseCase,
+) :
     ViewModel() {
 
     private val _account =
@@ -27,8 +32,23 @@ class ProfileViewModel @Inject constructor(private val getAccountDetailsByIdUseC
         )
     var account: StateFlow<AccountModel?> = _account
 
+    private val _personPopular =
+        MutableStateFlow<List<PersonModel>?>(emptyList())
+    var personPopular: StateFlow<List<PersonModel>?> = _personPopular
+
     init {
         getAccountDetailsById(accountId = 20695928)
+        getPersonPopular()
+    }
+
+    fun getPersonPopular() {
+        viewModelScope.launch {
+            getPersonPopularUseCase().onStart {
+            }.catch {
+            }.collect {
+                _personPopular.value = it.data?.map { it.toModel() }
+            }
+        }
     }
 
     fun getAccountDetailsById(accountId: Int) {
