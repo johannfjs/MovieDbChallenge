@@ -19,7 +19,6 @@ import com.globant.design.molecules.Movie
 fun MovieList(
     movies: List<MovieModel>,
     onClick: ((MovieModel) -> Unit)? = null,
-    onBookmarkClick: ((MovieModel) -> Unit)? = null,
     onInfoClick: ((MovieModel) -> Unit)? = null,
 ) {
     CompositionLocalProvider(LocalOverscrollConfiguration provides null) {
@@ -31,7 +30,6 @@ fun MovieList(
                 Movie(
                     movieModel = it,
                     onClick = onClick,
-                    onBookmarkClick = onBookmarkClick,
                     onInfoClick = onInfoClick,
                 )
             })
