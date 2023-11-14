@@ -32,6 +32,13 @@ MovieDbChallenge app using [The Movie DB](https://www.themoviedb.org) built with
 - [Retrofit](https://square.github.io/retrofit/) - A type-safe HTTP client for Android and Java.
 - [Material Components for Android](https://github.com/material-components/material-components-android) - Modular and customizable Material Design UI components for Android.
 
+## Next steps location and gallery functionalities
+For the location tab, I would first create in the firebase console the project in order to get the id to be used for consumption. Then, enable the services that I will need to consume.
+With a Job in the background I can get the location in realtime and save it in the realtime database and in turn be able to consume it so that all locations are displayed.
+With the push notification I can alert about the record that was added or I can read the database every x period of time.
+
+For the gallery tab, request permission to read photos and camera to get the images and with the project created in firebase to enable the storage so you can upload the images and then proceed to make a consumption of the information that was uploaded to display it on the screen.
+
 # License
 ```
 Copyright 2023 johannfjs (Johann Jara Sánchez)
