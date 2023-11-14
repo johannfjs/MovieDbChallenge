@@ -70,4 +70,13 @@ dependencies {
     implementation(libs.lifecycle.runtime.compose)
 
     implementation(libs.coil)
+
+
+    testImplementation("com.google.dagger:hilt-android-testing:2.44")
+    kaptTest("com.google.dagger:hilt-android-compiler:2.44")
+
+    testImplementation("org.mockito:mockito-core:3.11.2")
+    testImplementation("org.mockito:mockito-android:3.11.2")
+    testImplementation("org.robolectric:robolectric:4.5.1")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.1")
 }
