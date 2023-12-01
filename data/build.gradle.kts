@@ -18,7 +18,16 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("Boolean", "IS_DEBUG", "true")
+            buildConfigField(
+                "String",
+                "API_KEY",
+                "\"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzOWUwNWZhMzU0NjVmZTZhNzMwMzhlZWY4YmU4ODkxMSIsInN1YiI6IjY1NGU3YmRjMjg2NmZhMTA4ZTA4MTMyNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.OOksfoBsNEDFyQ8VyxpHoJhjEc8dV5wBsXfXhXGGVy4\"",
+            )
+        }
         release {
+            buildConfigField("Boolean", "IS_DEBUG", "false")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -32,6 +41,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
+    }
+    buildFeatures {
+        buildConfig = true
     }
 }
 
@@ -47,6 +59,7 @@ dependencies {
 
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter)
+    implementation(libs.retrofit.interceptor.logging)
 
     implementation(libs.room)
     implementation(libs.room.ktx)

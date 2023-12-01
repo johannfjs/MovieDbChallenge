@@ -2,4 +2,8 @@
 <resources>
 
     <style name="Theme.MovieDbChallengue" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="SplashScreenTheme" parent="Theme.MovieDbChallengue">
+        <item name="android:windowBackground">@drawable/bg_splash</item>
+    </style>
 </resources>

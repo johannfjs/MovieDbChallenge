@@ -8,6 +8,7 @@ import com.globant.feature.home.model.AccountModel
 import com.globant.feature.home.model.PersonModel
 import com.globant.feature.home.model.toModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
@@ -40,13 +41,28 @@ class ProfileViewModel @Inject constructor(
         getAccountDetailsById(accountId = 20695928)
         getPersonPopular()
     }
+    /*
+        fun getPersonPopular() {
+            viewModelScope.launch {
+                getPersonPopularUseCase().onStart {
+                }.catch {
+                }.collect {
+                    _personPopular.value = it.data?.map { it.toModel() }
+                }
+            }
+        }
+
+     */
 
     fun getPersonPopular() {
         viewModelScope.launch {
-            getPersonPopularUseCase().onStart {
-            }.catch {
-            }.collect {
-                _personPopular.value = it.data?.map { it.toModel() }
+            while (true) {
+                getPersonPopularUseCase().onStart {
+                }.catch {
+                }.collect {
+                    _personPopular.value = it.data?.map { it.toModel() }?.shuffled()
+                }
+                delay(5000)
             }
         }
     }
